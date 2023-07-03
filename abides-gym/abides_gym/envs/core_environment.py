@@ -213,6 +213,22 @@ class AbidesGymCoreEnv(gym.Env, ABC):
         # kernel.termination()
         ##TODO: look at whether some cleaning functions needed for abides
 
+    @abstractmethod       
+    def _map_action_space_to_ABIDES_SIMULATOR_SPACE(
+        self, action: int
+    ) -> List[Dict[str, Any]]:
+        """
+        abstract method that maps open ai action definition (integers) to environnement API action definition (list of dictionaries)
+
+        Arguments:
+            - action: integer representation of the different actions
+
+        Returns:
+            - action_list: list of the corresponding series of action mapped into abides env apis
+        """
+        raise NotImplementedError
+
+
     @abstractmethod
     def raw_state_to_state(self, raw_state: Dict[str, Any]) -> np.ndarray:
         """
