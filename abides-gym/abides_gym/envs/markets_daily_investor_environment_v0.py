@@ -441,7 +441,7 @@ class SubGymMarketsDailyInvestorEnv_v0(AbidesGymMarketsEnv):
 
         for book, book_name in [(bids, "bids"), (asks, "asks")]:
             for level in [0, 1, 2]:
-                price, volume = markets_agent_utils.get_val(bids, level)
+                price, volume = markets_agent_utils.get_val(book, level)
                 orderbook[book_name]["price"][level] = np.array([price]).reshape(-1)
                 orderbook[book_name]["volume"][level] = np.array([volume]).reshape(-1)
 
